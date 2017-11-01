@@ -21,11 +21,11 @@ RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificat
 RUN sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
 # MongoDB 3.4
-RUN \
-   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
-   echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.4.list && \
-   apt-get update && \
-   apt-get install -y mongodb-org
+#RUN \
+#   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6 && \
+#   echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | tee /etc/apt/sources.#list.d/mongodb-org-3.4.list && \
+#   apt-get update && \
+#   apt-get install -y mongodb-org
 
 # S6 overlay
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
@@ -67,8 +67,8 @@ ENV DATE_FORMAT "+%F@%T"
 
 # Local files removal
 ENV REMOVE_LOCAL_FILES_BASED_ON "space"
-ENV REMOVE_LOCAL_FILES_WHEN_SPACE_EXCEEDS_GB "100"
-ENV FREEUP_ATLEAST_GB "80"
+ENV REMOVE_LOCAL_FILES_WHEN_SPACE_EXCEEDS_GB "300"
+ENV FREEUP_ATLEAST_GB "200"
 ENV REMOVE_LOCAL_FILES_AFTER_DAYS "30"
 
 
